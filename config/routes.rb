@@ -8,6 +8,7 @@ AsKuery::Application.routes.draw do
   match '/askuery' => 'users#index'
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy'
+  match '/profile' => 'users#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
