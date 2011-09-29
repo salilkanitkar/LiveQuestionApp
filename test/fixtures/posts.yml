@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  question: MyText
+  numOfVotes: 1
+  parent: 1
+  rating: 1
+
+two:
+  question: MyText
+  numOfVotes: 1
+  parent: 1
+  rating: 1

@@ -1,0 +1,34 @@
+<h1>Listing users</h1>
+
+<% if session[:id] %>
+  <p> Logged in as <%= session[:username]%> <%= link_to "Sign Out", :controller => 'sessions', :action => 'destroy' %> </p>
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+    </table>
+
+<% else %>
+    <p>You need to login to view this page! <%= link_to "Sign In", :controller => 'sessions', :action => 'new' %></p>
+<% end %>
+
+
+<br />
+
+<%= link_to 'New User', new_user_path %>
