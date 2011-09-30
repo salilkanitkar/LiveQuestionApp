@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to :action => "new"
+    redirect_to:controller => :system, :action => "index"
   end
 
 end

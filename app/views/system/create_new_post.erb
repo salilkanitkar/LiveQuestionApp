@@ -1,0 +1,6 @@
+<h1>Ask Question</h1>
+
+	<%= form_tag(:action => 'add_new_post', :user_id => session[:id]) do %>
+        <%= text_area_tag(:question, "") %>  <br />
+        <%= submit_tag("Click to Ask Question!") %>
+    <% end %>

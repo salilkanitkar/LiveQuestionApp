@@ -11,7 +11,8 @@ AsKuery::Application.routes.draw do
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy'
   match '/profile' => 'users#show'
-  match '/system/add_new_post' => 'system#add_new_post'
+  match '/system/create_new_post' => 'system#create_new_post'
+  match '/system/addpost' => 'system#add_new_post'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

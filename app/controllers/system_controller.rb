@@ -4,11 +4,18 @@ class SystemController < ApplicationController
     @posts = Post.get_top_posts
   end
 
+  def create_new_post
+
+  end
+
   def add_new_post
-    @post = Post.new
-    @post.question = params[:question]
-    @post.user_id = params[:user_id]
-    @post.save
+    @qsn = params[:question]
+    @newpost = Post.new
+    @newpost.question = @qsn
+    @newpost.user_id = params[:user_id]
+    @newpost.parent = nil
+    @newpost.numOfVotes = 0
+    @newpost.save
     redirect_to  :controller => 'system', :action => 'index'
   end
 end
