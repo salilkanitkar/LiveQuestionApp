@@ -1,12 +1,14 @@
 <h1>Askuery</h1>
 
 <% if session[:id] %>
-   <p> Logged in as <%= session[:username]%> <%= link_to "Sign Out", :controller => 'sessions', :action => 'destroy' %> </p>
-   <p> <%= link_to "Ask Question", :controller => 'system', :action => 'create_new_post' %> </p>
+   Logged in as <%= session[:username]%> <%= link_to "Sign Out", :controller => 'sessions', :action => 'destroy' %>
+   <%= button_to "Ask Question", :controller => 'system', :action => 'create_new_post' %>
 <% else %>
     <p>You need to Sign In to ask a new question! <br /> <%= link_to "Sign In", :controller => 'sessions', :action => 'new' %></p>
 <% end %>
 
+<br />
+<hr /> <hr />
 <% for item in @posts %>
     <div id="post">
       <div id="votes" >
@@ -18,7 +20,25 @@
       <div id="uname">
         posted by <%= h get_user_name_from_user_id(item.user_id) %>
       </div>
+      <% Post.get_replies(item.id).each do |itemReply| %>
+          <hr />
+          <div id="votes" >
+             Reply Votes <%= itemReply.numOfVotes %>
+          </div>
+         <div id="reply">
+            <%= itemReply.question %>
+         </div>
+          <div id="unameReply">
+            posted by <%= h get_user_name_from_user_id(itemReply.user_id) %>
+          </div>
+      <% end %>
+      <% if session[:id] %>
+          	<%= form_tag(:action => 'add_new_reply', :user_id => session[:id], :post_id => item.id) do %>
+            <%= text_area_tag(:question, "") %>  <br />
+            <%= submit_tag("Post Reply") %>
+            <% end %>
+      <% end %>
     </div>
-    <br />
+    <br /><hr /> <hr />
 <% end %>
 

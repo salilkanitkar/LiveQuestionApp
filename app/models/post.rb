@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
     all(:order => "numOfVotes DESC", :conditions => {:parent => nil} )
   end
 
-  def self.find_replies(p)
+  def self.get_replies(p)
     all(:conditions => {:parent => p})
   end
 end
