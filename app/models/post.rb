@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user, :foreign_key => 'user_id'
   has_many :post
+  has_many :votes
 
   validates_presence_of :question
 

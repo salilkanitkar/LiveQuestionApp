@@ -9,27 +9,34 @@
 <hr /> <hr />
 <% for item in @posts %>
     <div id="post">
-      <div id="votes" >
-         Votes <%= item.numOfVotes %>
-      </div>
       <div id="content" >
          <%= item.question %>
       </div>
       <div id="uname">
         posted by <%= h get_user_name_from_user_id(item.user_id) %>
       </div>
+      <div id="votes" >
+         Number of Votes <%= item.numOfVotes %>
+      </div>
+      <% if session[:id] %>
+        <%= button_to "Vote Post", :action => :add_new_vote, :user_id => session[:id], :post_id => item.id %>
+      <% end %>
       <% Post.get_replies(item.id).each do |itemReply| %>
           <hr />
-          <div id="votes" >
-             Reply Votes <%= itemReply.numOfVotes %>
-          </div>
          <div id="reply">
             <%= itemReply.question %>
          </div>
           <div id="unameReply">
             posted by <%= h get_user_name_from_user_id(itemReply.user_id) %>
           </div>
+          <div id="votes" >
+             Number of Reply Votes <%= itemReply.numOfVotes %>
+          </div>
+          <% if session[:id] %>
+            <%= button_to "Vote This Reply", :action => :add_new_vote, :user_id => session[:id], :post_id => itemReply.id %>
+          <% end %>
       <% end %>
+      <br />
       <% if session[:id] %>
           	<%= form_tag(:action => 'add_new_reply', :user_id => session[:id], :post_id => item.id) do %>
             <%= text_area_tag(:question, "") %>  <br />

@@ -14,6 +14,7 @@ AsKuery::Application.routes.draw do
   match '/system/create_new_post' => 'system#create_new_post'
   match '/system/addpost' => 'system#add_new_post'
   match '/system/add_new_reply' => 'system#add_new_reply'
+  match '/system/add_new_vote' => 'system#add_new_vote'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
