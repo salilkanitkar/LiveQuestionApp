@@ -1,0 +1,120 @@
+body {
+    text-align: center;
+}
+
+.page-container {
+    margin: 0 auto;
+}
+
+.header-band {
+    background-color: #195695;
+}
+
+.header-content {
+    margin: 0 auto;
+    padding: 0 0;
+    width: 1024px;
+    position: relative;
+}
+
+.login-form {
+    float: right;
+}
+
+.group {
+    display: block;
+}
+
+.group {
+    height: 1%;
+}
+
+.group:after {
+    clear:both;
+    content:".";
+    display:block;
+    height:0;
+    visibility:hidden;
+}
+
+.group {
+    min-height: 1%;
+}
+
+.askuery-logo {
+    float: left;
+}
+
+.askuery-logo {
+    background: url('../images/logo.png') no-repeat 0 -20px;
+    display:block;
+    height:100px;
+    margin:3px 11px 0 0;
+    text-indent:-9001em;
+    width:265px;
+}
+
+main-content-band {
+    background:-webkit-gradient(linear,left top,left 35,from(#e5ecf3),to(#fff));
+    background:-moz-linear-gradient(top,#e5ecf3,#fff 35px);
+    background-color:#fff;
+}
+
+.main-content{
+    margin:0 auto;
+    width: 1024px;
+}
+
+.main-content-columns {
+    padding-top: 20px;
+}
+
+#header-search-form {
+    float: right;
+    margin-left: 10px;
+    padding-top: 3px;
+}
+
+#header-search-form input {
+    border: none;
+    border-right: 1px solid #507c0c;
+    color: #7aa1c2;
+    float: left;
+    font-size: 1.08333333333em;
+    height:26px;
+    padding: 0 8px;
+    width: 190px;
+    border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
+    -webkit-border-radius: 5px 0 0 5px;
+}
+
+#header-search-form input:focus {
+    color: #444;
+}
+
+#header-search-form .btn {
+    border: none;
+    height: 26px;
+    text-align: center;
+    width: 30px;
+    border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+}
+
+#header-search-form .btn span {
+    background: url('../images/search.jpg') no-repeat 0 -42px;
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display: inline;
+    height: 13px;
+    width: 12px;
+    vertical-align: 0;
+    zoom: 1;
+}
+
+
+#header-login-form {
+
+}

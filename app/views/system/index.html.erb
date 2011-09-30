@@ -1,5 +1,3 @@
-<h1>Askuery</h1>
-
 <% if session[:id] %>
    Logged in as <%= session[:username]%> <%= link_to "Sign Out", :controller => 'sessions', :action => 'destroy' %>
    <%= button_to "Ask Question", :controller => 'system', :action => 'create_new_post' %>

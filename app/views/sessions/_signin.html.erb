@@ -1,0 +1,7 @@
+<%= form_for(:session, :url => sessions_path, :id => "header-signin-form") do |f| %>
+
+  <span class="username"> <%= f.text_field :username %></span>
+  <span class="password"> <%= f.password_field :password %></span>
+  <span class="actions"><%= f.submit "Sign In" %></span>
+
+<% end %>
