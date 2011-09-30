@@ -6,6 +6,7 @@
     <th>Numofvotes</th>
     <th>Parent</th>
     <th>Rating</th>
+    <th>User Id</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= post.numOfVotes %></td>
     <td><%= post.parent %></td>
     <td><%= post.rating %></td>
+    <td><%= post.user_id %></td>
     <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>

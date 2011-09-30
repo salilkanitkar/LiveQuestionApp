@@ -1,14 +1,17 @@
 AsKuery::Application.routes.draw do
 
+  get "system/index"
+
   resources :votes
   resources :posts
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
-  match '/askuery' => 'users#index'
+  match '/askuery' => 'system#index' #'users#index'
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy'
   match '/profile' => 'users#show'
+  match '/system/add_new_post' => 'system#add_new_post'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

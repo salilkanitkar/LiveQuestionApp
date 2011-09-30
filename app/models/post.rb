@@ -1,6 +1,14 @@
 class Post < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, :foreign_key => 'user_id'
   has_many :post
 
   validates_presence_of :question
+
+  def self.get_top_posts
+    all(:order => "numOfVotes DESC", :conditions => {:parent => nil} )
+  end
+
+  def self.find_replies(p)
+    all(:conditions => {:parent => p})
+  end
 end

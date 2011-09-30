@@ -4,6 +4,7 @@
   <p> Logged in as <%= session[:username]%> <%= link_to "Sign Out", :controller => 'sessions', :action => 'destroy' %> </p>
     <table>
       <tr>
+        <th>User Id</th>
         <th>Username</th>
         <th>Name</th>
         <th>Email</th>
@@ -14,6 +15,7 @@
 
       <% @users.each do |user| %>
       <tr>
+        <td><%= user.id %></td>
         <td><%= user.username %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
