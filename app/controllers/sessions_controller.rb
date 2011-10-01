@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
       session[:id] = user.id
       session[:username] = user.username
       session[:password] = user.password
+      session[:isadmin] = user.isadmin
       redirect_to :controller => :system, :action => "index"
     end
   end

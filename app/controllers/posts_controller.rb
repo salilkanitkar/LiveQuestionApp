@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  include PostsHelper
+
   # GET /posts
   # GET /posts.json
   def index
@@ -72,11 +75,21 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+
+    @myreplies = Post.find_all_by_parent(params[:id])
+    if @myreplies.nil? == false
+      @myreplies.each do |myreply|
+        delete_my_votes(myreply.id)
+        myreply.destroy
+      end
+    end
+
     @post = Post.find(params[:id])
+    delete_my_votes(@post.id)
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to ('/askuery') }
       format.json { head :ok }
     end
   end
