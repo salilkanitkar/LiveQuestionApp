@@ -15,7 +15,11 @@
          <%= item.question %>
       </div>
       <div id="uname">
-        posted by <%= h get_user_name_from_user_id(item.user_id) %>
+        <% if session[:id] %>
+            Posted by <%= link_to "#{get_user_name_from_user_id(item.user_id)}", :controller => 'users', :action => 'show', :id => item.user_id %>
+        <% else %>
+            Posted by <%= h get_user_name_from_user_id(item.user_id) %>
+        <% end %>
       </div>
       <div id="votes" >
          Number of Votes <%= item.numOfVotes %>
@@ -23,6 +27,7 @@
       <% if session[:id] %>
         <%= button_to "Vote Post", :action => :add_new_vote, :user_id => session[:id], :post_id => item.id %>
       <% end %>
+      <br />
       <% if session[:isadmin] == 1 %>
         <%= button_to "Delete Post", :controller => 'posts', :action => :destroy, :id => item.id %>
       <% end %>
@@ -32,7 +37,11 @@
             <%= itemReply.question %>
          </div>
           <div id="unameReply">
-            posted by <%= h get_user_name_from_user_id(itemReply.user_id) %>
+            <% if session[:id] %>
+                Posted by <%= link_to "#{get_user_name_from_user_id(item.user_id)}", :controller => 'users', :action => 'show', :id => item.user_id %>
+            <% else %>
+                Posted by <%= h get_user_name_from_user_id(item.user_id) %>
+            <% end %>
           </div>
           <div id="votes" >
              Number of Reply Votes <%= itemReply.numOfVotes %>

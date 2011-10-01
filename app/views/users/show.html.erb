@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<p>Logged in as <%= session[:username]%> <br />
+
 <hr />
 <h2>User Profile</h2>
 
@@ -20,19 +22,23 @@
 
 <% if @numofposts == 0 %>
     <p>
-      <b>This user has not posted any questions yet.</b>
+      <b> <%= @user.username %> has not posted any questions yet.</b>
     </p>
 <% else %>
     <p>
-      <b>Number of Posts by this User:</b>
+      <b>Number of Posts by <%= @user.username %>:</b>
       <%= @numofposts %>
     </p>
 <% end %>
 
 <% if @user.isadmin == 1 %>
 <p>
-  <b>This user has Admin Functionality.</b>
+  <b> <%= @user.username %> has Admin Functionality.</b>
 </p>
+<% end %>
+
+<% if session[:isadmin] == 1 && session[:id] != @user.id %>
+    <%= button_to 'Delete This User',  :controller => 'system', :action => 'delete_user', :user_id => @user.id %>
 <% end %>
 
 <hr />
