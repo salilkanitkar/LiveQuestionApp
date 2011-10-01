@@ -13,12 +13,27 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
 
-    @user = User.find(session[:id])
+    myposts = ""
+    if params[:id]
+      @user = User.find(params[:id])
+    elsif session[:id]
+      @user = User.find(session[:id])
+    else
+      flash[:error] = "You will need to Sign In to view this page."
+      redirect_to :controller => 'system', :action => 'index'
+    end
+
+    @numofposts = 0
+    myposts = get_my_posts(@user)
+    if myposts.nil? == false && myposts.instance_of?(Array)
+       @numofposts = myposts.length
+    end
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
     end
+
   end
 
   # GET /users/new
@@ -80,4 +95,10 @@ class UsersController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def get_my_posts(user)
+     myposts = Post.find_all_by_user_id(user.id)
+     myposts
+  end
+
 end

@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(:version => 20110929182337) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "password"
-    t.string   "name"
-    t.string   "email"
+    t.string   "username",   :default => "", :null => false
+    t.string   "password",   :default => "", :null => false
+    t.string   "name",       :default => "", :null => false
+    t.string   "email",      :default => "", :null => false
+    t.integer  "isadmin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

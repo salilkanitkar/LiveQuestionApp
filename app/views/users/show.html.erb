@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<hr />
+<h2>User Profile</h2>
+
 <p>
   <b>Username:</b>
   <%= @user.username %>
@@ -15,5 +18,22 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% if @numofposts == 0 %>
+    <p>
+      <b>This user has not posted any questions yet.</b>
+    </p>
+<% else %>
+    <p>
+      <b>Number of Posts by this User:</b>
+      <%= @numofposts %>
+    </p>
+<% end %>
+
+<% if @user.isadmin == 1 %>
+<p>
+  <b>This user has Admin Functionality.</b>
+</p>
+<% end %>
+
+<hr />
+<%= link_to 'Go To Homepage',  :controller => 'system', :action => 'index' %>
