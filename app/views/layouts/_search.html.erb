@@ -1,0 +1,6 @@
+<%= form_for(:system, :url => "search", :html => {:id => "header-search-form"}) do |f| %>
+
+  <%= f.text_field(:searchbox, :placeholder => 'Search')%>
+  <%= f.submit("", :id => "search-button") %>
+
+<% end %>

@@ -10,6 +10,7 @@ AsKuery::Application.routes.draw do
   match '/askuery' => 'system#index' #'users#index'
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy'
+  match '/sessions/:id' => 'sessions#destroy'
   match '/profile' => 'users#show'
   match '/system/create_new_post' => 'system#create_new_post'
   match '/system/addpost' => 'system#add_new_post'
@@ -67,7 +68,7 @@ AsKuery::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'users#index'
+  root :to => 'system#index'
 
   # See how all your routes lay out with "rake routes"
 

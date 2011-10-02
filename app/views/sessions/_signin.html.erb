@@ -1,7 +1,35 @@
-<%= form_for(:session, :url => sessions_path, :id => "header-signin-form") do |f| %>
-
-  <span class="username"> <%= f.text_field :username %></span>
-  <span class="password"> <%= f.password_field :password %></span>
-  <span class="actions"><%= f.submit "Sign In" %></span>
-
+<% if session[:id] %>
+  <div class="signed-in">
+    <ul id="nav">
+      <li>
+        <div id="profile-name"><%= session[:username]%></div>
+        <div id="profile-dropdown-image"> </div>
+        <ul>
+          <li>
+            <%= link_to "Profile", :controller => 'users', :action => 'show' %>
+          </li>
+          <li>
+            <% if session[:isadmin] == 1 %>
+              <%= link_to "Admin", :controller => 'users', :action => 'show' %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "Sign Out", :controller => 'sessions', :action => 'destroy', :id => session[:id] %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+<% else %>
+  <%= form_for(:session, :url => sessions_path, :html => {:id => "header-signin-form"}) do |f| %>
+    <div class="signin-part">
+      <span> <%= f.text_field(:username, :placeholder => 'Username')%>
+        <%= f.password_field(:password, :placeholder => 'Password') %>
+        <%= f.submit("Sign In", :id => "session-sign-in") %>
+      </span>
+    </div>
+    <div class="signup-part">
+      If you do not have an account, <span><%= link_to "Sign Up", :controller => :users, :action => :new %></span>
+    </div>
+  <% end %>
 <% end %>

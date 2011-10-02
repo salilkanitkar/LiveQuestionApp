@@ -1,0 +1,18 @@
+<div class="nav mainnavs">
+  <ul>
+    <li><%= link_to "Home", :controller => 'system', :action => 'index', :id => "nav-questions" %></li>
+    <!--<li><a id="nav-questions" href="/questions">Questions</a></li>-->
+    <li><%= link_to "Users", :controller => 'users', :action => 'index'%></li>
+    <!--<li><a id="nav-users" href="/users">Users</a></li>-->
+    <!--<li><a id="nav-badges" href="/badges">Badges</a></li>
+    <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li> -->
+  </ul>
+</div>
+<div class="nav askquestion">
+  <ul>
+    <li>
+      <%= link_to "Ask Question", :controller => 'posts', :action => 'new', :id => "nav-askquestion" %>
+        <!--<a id="nav-askquestion"  href="/questions/ask">Ask Question</a>  -->
+    </li>
+  </ul>
+</div>

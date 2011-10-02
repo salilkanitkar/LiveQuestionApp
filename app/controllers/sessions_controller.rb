@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def new
     @title = "Sign In"
+    redirect_to :controller => :system, :action => "index"
   end
 
   def create
@@ -8,20 +9,17 @@ class SessionsController < ApplicationController
                              params[:session][:password])
     if user.nil?
       flash.now[:error] = "Invalid username/password combination."
-      # redirect_to :action => "new"
-      render 'new'
     else
       session[:id] = user.id
       session[:username] = user.username
       session[:password] = user.password
       session[:isadmin] = user.isadmin
-      redirect_to :controller => :system, :action => "index"
     end
+    redirect_to :controller => :system, :action => "index"
   end
 
   def destroy
     reset_session
-    redirect_to:controller => :system, :action => "index"
+    redirect_to :controller => :system, :action => "index"
   end
-
 end

@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
 }
 
 .page-container {
@@ -7,7 +8,7 @@ body {
 }
 
 .header-band {
-    background-color: #195695;
+    background-color: #ffffff;
 }
 
 .header-content {
@@ -17,7 +18,7 @@ body {
     position: relative;
 }
 
-.login-form {
+.header-signin-content {
     float: right;
 }
 
@@ -47,20 +48,20 @@ body {
 
 .askuery-logo {
     background: url('../images/logo.png') no-repeat 0 -20px;
-    display:block;
+    display: inline-block;
     height:100px;
     margin:3px 11px 0 0;
     text-indent:-9001em;
     width:265px;
 }
 
-main-content-band {
+.main-content-band {
     background:-webkit-gradient(linear,left top,left 35,from(#e5ecf3),to(#fff));
     background:-moz-linear-gradient(top,#e5ecf3,#fff 35px);
-    background-color:#fff;
+    background-color: #fff;
 }
 
-.main-content{
+.main-content {
     margin:0 auto;
     width: 1024px;
 }
@@ -70,51 +71,346 @@ main-content-band {
 }
 
 #header-search-form {
-    float: right;
+    float:right;
     margin-left: 10px;
-    padding-top: 3px;
+    padding-top: 15px;
 }
 
-#header-search-form input {
-    border: none;
-    border-right: 1px solid #507c0c;
+#system_searchbox {
+    border: 1px solid #a52a2a;
     color: #7aa1c2;
-    float: left;
-    font-size: 1.08333333333em;
-    height:26px;
-    padding: 0 8px;
-    width: 190px;
-    border-radius: 5px 0 0 5px;
-    -moz-border-radius: 5px 0 0 5px;
-    -webkit-border-radius: 5px 0 0 5px;
+    height:20px;
+    width: 150px;
+    background: #f5f5f5;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
 }
 
 #header-search-form input:focus {
     color: #444;
 }
 
-#header-search-form .btn {
+#search-button {
     border: none;
-    height: 26px;
+    height: 20px;
+    width: 20px;
     text-align: center;
-    width: 30px;
-    border-radius: 0 5px 5px 0;
-    -moz-border-radius: 0 5px 5px 0;
-    -webkit-border-radius: 0 5px 5px 0;
+    width: 20px;
+    cursor: pointer;
+    background: url('../images/search.jpg') no-repeat 50% 50% ;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
 }
 
-#header-search-form .btn span {
-    background: url('../images/search.jpg') no-repeat 0 -42px;
-    display: -moz-inline-stack;
+#header-signin-form {
     display: inline-block;
-    *display: inline;
-    height: 13px;
-    width: 12px;
-    vertical-align: 0;
-    zoom: 1;
+    padding-top: 15px
+}
+
+#session_username, #session_password{
+    border: 1px solid #a52a2a;
+    background: #f5f5f5;
+    height: 20px;
+    width: 100px;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+}
+
+#session-sign-in {
+    border: 2px black;
+    background: green;
+    color: #ffffff;
+    height: 25px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+}
+
+#session-sign-in:focus, #session-sign-in:hover {
+    background-color: #0a8e21;
+}
+
+#session-sign-in:active {
+    background-color: #09731c;
+}
+
+.signup-part {
+    font-size: 80%;
+    text-align: right;
+    padding-top: 5px;
+}
+
+#profile-dropdown-image {
+    float: right;
+    display: inline-block;
+    height: 20px;
+    width: 10px;
+    background: url('../images/down-arrow.png') no-repeat 50% 50%;
+}
+
+#profile-name, #user-name-link {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#profile-name {
+    float: left;
+    width: 100px;
+}
+
+#user-name-link {
+    width: 190px;
+}
+/* BE SURE TO INCLUDE THE CSS RESET FOUND IN THE DEMO PAGE'S CSS */
+/*------------------------------------*\
+	NAV
+\*------------------------------------*/
+#nav{
+	list-style:none;
+	margin-bottom:10px;
+	/* Clear floats */
+	float:left;
+	 /*Bring the nav above everything else--uncomment if needed. */
+	position:relative;
+	z-index:5;
+
+    background: -webkit-gradient(linear,left top,left bottom,from(#8eaf53),to(#799e3c));
+    background: -moz-linear-gradient(top,#8eaf53,#799e3c);
+    background-color:#799e3c;
+    border: 1px solid #799e3c;
+    color: #fff;
+    padding: 1px;
+}
+
+#nav li{
+	float:left;
+	/*margin-right:10px;*/
+	position: relative;
+    width: 110px;
+}
+
+#nav a{
+	display: block;
+	padding: 5px;
+	color: #fff;
+	background: #333;
+	text-decoration: none;
+}
+#nav a:hover{
+	color:#fff;
+	background:#6b0c36;
+	text-decoration:underline;
+}
+
+/*--- DROPDOWN ---*/
+#nav ul{
+	background:#fff; /* Adding a background makes the dropdown work properly in IE7+. Make this as close to your page's background as possible (i.e. white page == white background). */
+	background:rgba(255,255,255,0); /* But! Let's make the background fully transparent where we can, we don't actually want to see it if we can help it... */
+	list-style: none;
+	position: absolute;
+	left:-9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+    width: 100%;
+}
+#nav ul li{
+	/*padding-top:1px; /* Introducing a padding between the li and the a give the illusion spaced items */
+	float:none;
+}
+#nav ul a{
+	white-space:nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+    text-align: left;
+    width: 110px;
+    font-size: 80%;
+}
+#nav li:hover ul{ /* Display the dropdown on hover */
+    left: -40%; /* Bring back on-screen when needed */
+    top: 100%;
+
+}
+#nav li:hover a{ /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
+	background: -webkit-gradient(linear,left top,left bottom,from(#8eaf53),to(#799e3c));
+    background: -moz-linear-gradient(top,#8eaf53,#799e3c);
+    background-color:#799e3c;
+	text-decoration:underline;
+}
+#nav li:hover ul a{ /* The persistent hover state does however create a global style for links even before they're hovered. Here we undo these effects. */
+	text-decoration:none;
+}
+#nav li:hover ul li a:hover{ /* Here we define the most explicit hover states--what happens when you hover each individual link. */
+	background: -webkit-gradient(linear,left top,left bottom,from(#8eaf53),to(#799e3c));
+    background: -moz-linear-gradient(top,#8eaf53,#799e3c);
+    background-color:#799e3c;
 }
 
 
-#header-login-form {
+.nav-bar {
+    float: left;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
 
+.nav {
+    float: left;
+    font-size: 100%;
+}
+
+.nav ul, .button-panel ul, .form-button-panel ul, .post-button-panel ul  {
+    margin: 0;
+}
+
+.nav li, .button-panel li, .form-button, .post-button-panel li {
+    background: #777777;
+    display: block;
+
+    margin-right:7px;
+}
+
+.form-button-panel li, .post-button-panel li {
+    display: block;
+    float: right;
+}
+
+.form-button-panel li {
+    margin-right:  40px;
+}
+
+.nav li, .button-panel li {
+    float: left;
+}
+
+.nav li:hover, .button-panel li:hover, .form-button:hover, .post-button-panel li:hover {
+    background-color:#ff9900;
+}
+
+.nav a, .button-panel a, .form-button, .post-button-panel a {
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    padding: 6px 12px 6px 12px;
+    text-decoration: none;
+}
+
+.askquestion, .form-button {
+    float: right;
+}
+
+.form-button {
+    margin-right: 0;
+}
+
+#nav-askquestion {
+    margin-right:0;
+}
+
+.button-panel {
+    font-size: 100%;
+}
+
+.button-panel-container {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 800px;
+}
+
+.askuery-form {
+    text-align: center;
+}
+
+.form-button {
+    border: none;
+    font-size: 105%;
+    float: right;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.text-input {
+    width: 800px;
+    height: 300px;
+    min-width: 400px;
+    min-height: 200px;
+}
+
+.post-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+}
+
+.post {
+    margin-left: auto;
+    margin-right: auto;
+    height: 130px;
+}
+.post-other-data {
+    float: left;
+    width: 200px;
+}
+
+.post-content {
+    float: left;
+    height: 100px;
+    width: 700px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post-content a {
+    color: #4d4848;
+    font-size: 20px;
+    height: 100px;
+    font-weight: bold;
+    text-decoration: none;
+    width: 700px;
+}
+
+.post-content a:hover {
+    color: #195695;
+    cursor: pointer;
+}
+
+.vote-section, .user-section {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.vote-section li .vote-num {
+    color: #195695;
+    font-size: 30px;
+}
+
+.vote-section li .vote-text {
+    color: #195695;
+    font-size: 100%;
+}
+
+.post-button-container {
+    float: right;
+    width: 700px;
+    height: 30px;
+
+}
+
+.post-button-panel {
+    float: right;
+    font-size: 100%;
+}
+
+.post-text {
+    height: 90px;
+    width: 690px;
+    border: gray solid 1px;
+    font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+    font-size: 105%;
 }

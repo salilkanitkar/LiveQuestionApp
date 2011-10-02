@@ -1,63 +1,10 @@
-<% if session[:id] %>
-   Logged in as <%= session[:username]%> <br />
-   <%= link_to "Sign Out", :controller => 'sessions', :action => 'destroy' %> <br />
-   <%= link_to "My Profile", :controller => 'users', :action => 'show' %> <br /> <br />
-   <%= button_to "Ask Question", :controller => 'system', :action => 'create_new_post' %>
-<% else %>
-    <p>You need to <%= link_to "Sign In", :controller => 'sessions', :action => 'new' %> or <%= link_to "Sign Up", :controller => 'users', :action => 'new' %> to ask a new question! <br /> </p>
-<% end %>
-
+<meta http-equiv="refresh" content="60" />
 <br />
-<hr /> <hr />
-<% for item in @posts %>
-    <div id="post">
-      <div id="content" >
-         <%= item.question %>
-      </div>
-      <div id="uname">
-        <% if session[:id] %>
-            Posted by <%= link_to "#{get_user_name_from_user_id(item.user_id)}", :controller => 'users', :action => 'show', :id => item.user_id %>
-        <% else %>
-            Posted by <%= h get_user_name_from_user_id(item.user_id) %>
-        <% end %>
-      </div>
-      <div id="votes" >
-         Number of Votes <%= item.numOfVotes %>
-      </div>
-      <% if session[:id] %>
-        <%= button_to "Vote Post", :action => :add_new_vote, :user_id => session[:id], :post_id => item.id %>
-      <% end %>
-      <br />
-      <% if session[:isadmin] == 1 %>
-        <%= button_to "Delete Post", :controller => 'posts', :action => :destroy, :id => item.id %>
-      <% end %>
-      <% Post.get_replies(item.id).each do |itemReply| %>
-          <hr />
-         <div id="reply">
-            <%= itemReply.question %>
-         </div>
-          <div id="unameReply">
-            <% if session[:id] %>
-                Posted by <%= link_to "#{get_user_name_from_user_id(item.user_id)}", :controller => 'users', :action => 'show', :id => item.user_id %>
-            <% else %>
-                Posted by <%= h get_user_name_from_user_id(item.user_id) %>
-            <% end %>
-          </div>
-          <div id="votes" >
-             Number of Reply Votes <%= itemReply.numOfVotes %>
-          </div>
-          <% if session[:id] %>
-            <%= button_to "Vote This Reply", :action => :add_new_vote, :user_id => session[:id], :post_id => itemReply.id %>
-          <% end %>
-      <% end %>
-      <br />
-      <% if session[:id] %>
-          	<%= form_tag(:action => 'add_new_reply', :user_id => session[:id], :post_id => item.id) do %>
-            <%= text_area_tag(:question, "") %>  <br />
-            <%= submit_tag("Post Reply") %>
-            <% end %>
-      <% end %>
-    </div>
-    <br /><hr /> <hr />
-<% end %>
+<div class="title">
+  Top Questions
+</div>
+<br />
+<div class="post-container">
+    <%= render(@posts) %>
+</div>
 

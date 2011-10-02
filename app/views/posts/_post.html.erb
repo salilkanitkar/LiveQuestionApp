@@ -1,0 +1,61 @@
+<div>
+    <hr>
+    <br />
+  </div>
+<div class="post">
+  <div class="post-other-data">
+    <div class="vote-section-container">
+      <ul class="vote-section">
+        <li>
+          <% if session[:id] %>
+            <%= form_tag(:controller => 'system', :action => 'add_new_vote', :user_id => session[:id], :post_id => post.id, :caller => params[:controller]) do %>
+              <%= image_submit_tag("../images/up.png") %>
+            <% end %>
+          <% end %>
+        </li>
+        <li>
+          <span class="vote-num"><%= post.numOfVotes %></span>
+        </li>
+        <li>
+          <span class="vote-text">Votes</span>
+        </li>
+      </ul>
+    </div>
+    <br />
+    <div class="user-section-container">
+      <ul class="user-section">
+        <li>
+          <div id="user-name-link">by <%= link_to "#{get_user_name_from_user_id(post.user_id)}", :controller => 'users', :action => 'show', :id => post.user_id %></div>
+        </li>
+        <li>
+          <span>on <%= post.created_at.strftime("%m-%d-%Y")%></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="post-content" >
+    <% if params[:controller] == "system" and params[:action] == "index" %>
+      <%= link_to post.question, :controller => 'posts', :action => 'show', :id => post.id %>
+    <% else %>
+      <label>
+        <textarea class="post-text" readonly="readonly"><%= post.question %></textarea>
+      </label>
+    <% end %>
+  </div>
+  <div class="post-button-container">
+    <div class="post-button-panel">
+      <ul>
+        <li>
+          <% if post.parent.nil? and params[:controller] == 'system' %>
+            <%= link_to "Reply", :controller => 'posts', :action => 'show', :id => post.id %>
+          <% end %>
+        </li>
+        <li>
+          <% if session[:isadmin] == 1 and post.parent.nil? %>
+            <%= button_to "Delete", :controller => 'posts', :action => :destroy, :id => post.id  %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :question
 
   def self.get_top_posts
-    all(:order => "numOfVotes DESC", :conditions => {:parent => nil} )
+    all(:order => "numOfVotes DESC", :limit => 25, :conditions => {:parent => nil} )
   end
 
   def self.get_replies(p)

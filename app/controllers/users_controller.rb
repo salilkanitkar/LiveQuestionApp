@@ -2,11 +2,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    if session[:id]
       @users = User.all
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @users }
       end
+    else
+      flash[:error] = "You will need to Sign In to view this page."
+      redirect_to :controller => 'system', :action => 'index'
+    end
   end
 
   # GET /users/1

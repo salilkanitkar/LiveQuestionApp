@@ -1,7 +1,6 @@
-
 <div>
   <div class="askuery-form">
-    <%= form_tag(:controller => 'system', :action => 'add_new_post', :user_id => session[:id]) do %>
+    <%= form_tag(:controller => 'system', :action => 'add_new_reply', :user_id => session[:id], :post_id => @post.id) do %>
       <%= text_area_tag(:question, "", :class => "text-input") %>
       <br />
       <br />

@@ -13,23 +13,25 @@
 
     <div class="header-band">
       <div class="header-content group">
-        <a href="" class="askuery-logo">Askuery</a>
-
-        <div class="login-form">
+        <div>
+          <a href="/" class="askuery-logo">Askuery</a>
+        </div>
+        <div class="nav-bar">
+          <%= render "layouts/navbar" %>
+        </div>
+        <div class="header-search-form">
+          <%= render "layouts/search" %>
+        </div>
+        <div class="header-signin-content">
           <%= render "sessions/signin" %>
         </div>
 
       </div>
     </div>
-
     <div class="main-content-band">
       <div class="main-content">
         <%= yield %>
-
       </div>
     </div>
-
-
-
   </body>
 </html>
