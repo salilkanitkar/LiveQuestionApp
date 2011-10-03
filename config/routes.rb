@@ -18,6 +18,8 @@ AsKuery::Application.routes.draw do
   match '/system/add_new_vote' => 'system#add_new_vote'
   match '/posts/:id' => 'posts#destroy'
   match '/system/delete_user' => 'system#delete_user'
+  match '/system/grant_isadmin' => 'system#grant_isadmin'
+  match '/system/revoke_isadmin' => 'system#revoke_isadmin'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

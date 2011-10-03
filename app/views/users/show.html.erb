@@ -37,7 +37,12 @@
 <% end %>
 
 <% if session[:isadmin] == 1 && session[:id] != @user.id %>
-    <%= button_to 'Delete This User',  :controller => 'system', :action => 'delete_user', :user_id => @user.id %>
+    <%= button_to 'Delete This User',  :controller => 'system', :action => 'delete_user', :user_id => @user.id %> <br />
+    <% if @user.isadmin == 0 %>
+        <%= button_to 'Grant Admin Privileges to this User',  :controller => 'system', :action => 'grant_isadmin', :user_id => @user.id %> <br />
+    <% else %>
+        <%= button_to 'Revoke Admin Privileges from this User',  :controller => 'system', :action => 'revoke_isadmin', :user_id => @user.id %> <br />
+    <% end %>
 <% end %>
 
 <hr />

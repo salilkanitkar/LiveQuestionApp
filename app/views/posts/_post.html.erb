@@ -25,7 +25,11 @@
     <div class="user-section-container">
       <ul class="user-section">
         <li>
-          <div id="user-name-link">by <%= link_to "#{get_user_name_from_user_id(post.user_id)}", :controller => 'users', :action => 'show', :id => post.user_id %></div>
+          <% if session[:id] %>
+            <div id="user-name-link">by <%= link_to "#{get_user_name_from_user_id(post.user_id)}", :controller => 'users', :action => 'show', :id => post.user_id %></div>
+          <% else %>
+            <div id="user-name-link">by <%= get_user_name_from_user_id(post.user_id) %></div>
+          <% end %>
         </li>
         <li>
           <span>on <%= post.created_at.strftime("%m-%d-%Y")%></span>

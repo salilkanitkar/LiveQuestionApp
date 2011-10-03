@@ -59,7 +59,7 @@ class SystemController < ApplicationController
         flash[:error] = "You are not allowed to vote the same Post more than once!"
       end
     else
-      flash[:error] = "You must be sign in to reply to a question"
+      flash[:error] = "You must be signed in to reply to a question"
     end
 
     if params[:caller] == 'system'
@@ -105,6 +105,31 @@ class SystemController < ApplicationController
     @user.destroy
 
     redirect_to :controller => 'system', :action => 'index'
+  end
+
+  def grant_isadmin
+    myuser = User.find(Integer(params[:user_id]))
+    # flash[:error] = "The isadmin is :"+String(myuser.isadmin)+":"
+    if myuser.isadmin == 1
+      flash[:error] = "This user is already an Admin"
+      redirect_to :controller => 'system', :action => 'index'
+    else
+      # myuser.isadmin = 1
+      myuser.update_attribute(:isadmin, 1)
+      redirect_to :controller => 'system', :action => 'index'
+    end
+  end
+
+  def revoke_isadmin
+    myuser = User.find(params[:user_id])
+    if myuser.isadmin == 0
+      flash[:error] = "This user is not an Admin"
+      redirect_to :controller => 'system', :action => 'index'
+    else
+      # myuser.isadmin = 0
+      myuser.update_attribute(:isadmin, 0)
+      redirect_to :controller => 'system', :action => 'index'
+    end
   end
 end
 

@@ -18,14 +18,19 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   def encrypt_password
-    self.password = Digest::SHA2.hexdigest(self.password)
+    if new_record?
+      self.password = Digest::SHA2.hexdigest(self.password)
+    end
+    if self.isadmin.nil?
+      self.isadmin=0
+    end
   end
 
   def password_check
-    if password.blank?
-      errors.add(:password, "field can not be empty")
-    end
-    errors.add(:password, "can not be smaller than 6 or greater than 20 characters") if password.size < 6 or password.size > 20
+      if self.password.blank?
+        errors.add(:password, "field can not be empty")
+      end
+      errors.add(:password, "can not be smaller than 6 or greater than 20 characters:"+self.password+":") if self.password.length < 6 or self.password.length > 20
   end
 
   def self.authenticate(user_name, password)

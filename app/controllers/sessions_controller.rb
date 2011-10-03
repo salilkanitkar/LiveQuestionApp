@@ -8,14 +8,16 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:username],
                              params[:session][:password])
     if user.nil?
-      flash.now[:error] = "Invalid username/password combination."
+      flash[:error] = "Invalid username/password combination."
+      redirect_to :controller => :system, :action => "index"
     else
       session[:id] = user.id
       session[:username] = user.username
       session[:password] = user.password
       session[:isadmin] = user.isadmin
+      redirect_to :controller => :system, :action => "index"
     end
-    redirect_to :controller => :system, :action => "index"
+
   end
 
   def destroy
