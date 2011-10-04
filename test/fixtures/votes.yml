@@ -4,8 +4,28 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+
+<% (1..49).each do |i| %>
+vfix_<%= i %>:
+    id: <%= i %>
+    post_id: <%= i %>
+    user_id: <%= i+1 %>
+<% end %>
+
+vfix_50:
+    id: 50
+    post_id: 50
+    user_id: 1
+
+<% (51..99).each do |i| %>
+vfix_<%= i %>:
+    id: <%= i %>
+    post_id: <%= i-50 %>
+    user_id: <%= i-50+1 %>
+<% end %>
+
+vfix_100:
+    id: 100
+    post_id: 50
+    user_id: 1
+

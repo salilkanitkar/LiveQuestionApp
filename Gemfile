@@ -29,5 +29,8 @@ gem 'jquery-rails'
 
 group :test do
   # Pretty printed test output
+  gem 'test-unit'
+  gem 'memory_test_fix'
+  gem 'capybara'
   gem 'turn', :require => false
 end

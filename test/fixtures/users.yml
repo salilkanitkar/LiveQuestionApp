@@ -1,13 +1,39 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
-one:
-  username: MyString
-  password: MyString
-  name: MyString
-  email: MyString
+# Create 50 users for testing - Three real users and remaining scripted
 
-two:
-  username: MyString
-  password: MyString
-  name: MyString
-  email: MyString
+ufix_1:
+  id: 1
+  username: sskanitk
+  password: <%= Digest::SHA2.hexdigest("123456") %>
+  name: Salil
+  email: s@ncsu.edu
+  isadmin: 1
+
+ufix_2:
+  id: 2
+  username: mohanish
+  password: <%= Digest::SHA2.hexdigest("123456") %>
+  name: Mohanish
+  email: m@ncsu.edu
+  isadmin: 0
+
+ufix_3:
+  id: 3
+  username: abhishek
+  password: <%= Digest::SHA2.hexdigest("123456") %>
+  name: Abhishek
+  email: a@ncsu.edu
+  isadmin: 0
+
+<% (4..50).each do |i| %>
+ufix_<%= i %>:
+    id: <%= i %>
+    username: user_<%= i %>
+    password: <%= Digest::SHA2.hexdigest("123456") %>
+    name: User_<%= i %>
+    email: e@ncsu.edu
+    isadmin: 0
+<% end %>
+
+

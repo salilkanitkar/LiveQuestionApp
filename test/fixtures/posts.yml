@@ -1,13 +1,47 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
-one:
-  question: MyText
-  numOfVotes: 1
-  parent: 1
+# Create 50 posts - one by each of the 50 users created in users.yml
+# Then add 50 "replies" - 1 for each question
+pfix_1:
+  id: 1
+  question: "This is question 1"
+  numOfVotes: 10
+  parent: -1
   rating: 1
+  user_id: 1
 
-two:
-  question: MyText
-  numOfVotes: 1
-  parent: 1
+pfix_2:
+  id: 2
+  question: "This is question 2"
+  numOfVotes: 5
+  parent: -1
   rating: 1
+  user_id: 2
+
+pfix_3:
+  id: 3
+  question: "This is question 3"
+  numOfVotes: 3
+  parent: -1
+  rating: 1
+  user_id: 3
+
+<% (4..50).each do |i| %>
+pfix_<%= i %>:
+    id: <%= i %>
+    question: This is question <%= i %>
+    numOfVotes: 0
+    parent: -1
+    rating: 1
+    user_id: <%= i %>
+<% end %>
+
+<% (51..100).each do |i| %>
+pfix_<%= i %>:
+    id: <%= i %>
+    question: This is reply to question <%= i-50 %>
+    numOfVotes: 1
+    parent: <%= i-50 %>
+    rating: 1
+    user_id: <%= i-50 %>
+<% end %>
