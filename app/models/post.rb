@@ -22,6 +22,10 @@ class Post < ActiveRecord::Base
     count(:conditions => {:user_id => u})
   end
 
+  def self.get_num_votes_for(u)
+    sum(:numOfVotes, :conditions => {:user_id => u})
+  end
+
   def self.search(key)
     all(:order => "numOfVotes DESC, created_at DESC", :conditions => ["#{:question} like ?", '%' + key + '%'])
   end

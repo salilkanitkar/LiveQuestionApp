@@ -12,8 +12,11 @@
         <th>Username</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Posts</th>
         <% if session[:isadmin] == 1 %>
+          <th>Posts</th>
+          <th>Votes for</th>
+          <th>Votes By</th>
+          <th></th>
           <th></th>
         <% end %>
       </tr>

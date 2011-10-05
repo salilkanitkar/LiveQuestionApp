@@ -7,7 +7,8 @@ AsKuery::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
-  match '/askuery' => 'system#index' #'users#index'
+  match '/askuery' => 'system#index'
+  match '/system' => 'system#index'
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy'
   match '/sessions/:id' => 'sessions#destroy'

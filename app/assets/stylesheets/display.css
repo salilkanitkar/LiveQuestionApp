@@ -468,10 +468,10 @@ body {
 }
 
 .td-login, .td-uname, .td-email {
-    width: 200px;
+    width: 150px;
 }
 
-.td-posts {
+.td-posts, .td-votes-for, .td-votes-by {
     width: 100px;
 }
 
