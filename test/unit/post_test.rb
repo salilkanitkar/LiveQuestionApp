@@ -18,4 +18,10 @@ class PostTest < ActiveSupport::TestCase
     assert_equal(post.user_id, 1)
   end
 
+  test "numOfVotes should not be less than zero" do
+    post = Post.new
+    post.numOfVotes = -1
+    assert !post.save, "Number of votes can not be less than zero for any Post"
+  end
+
 end

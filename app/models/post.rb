@@ -6,8 +6,6 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :question
 
-
-
   def self.get_top_posts
     all(:order => "numOfVotes DESC, created_at DESC", :limit => 50, :conditions => {:parent => nil})
   end
