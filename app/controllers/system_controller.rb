@@ -44,9 +44,8 @@ class SystemController < ApplicationController
   end
 
   def add_new_vote
-
+    @thispost = Post.find(params[:post_id])
     if session[:id]
-      @thispost = Post.find(params[:post_id])
       @votedbefore = Vote.find_by_user_id_and_post_id(Integer(params[:user_id]), Integer(params[:post_id]))
 
       if @thispost.user_id == Integer(params[:user_id])
@@ -111,7 +110,6 @@ class SystemController < ApplicationController
       @user.destroy
     else
       flash[:error] = "You must be signed as an Administrator to do this operation"
-      redirect_to :controller => 'system', :action => 'index'
     end
 
     if params[:listing] == '1'
@@ -143,15 +141,37 @@ class SystemController < ApplicationController
 
   def search_results
     @query = params[:system][:searchbox]
-    @keywords = @query.split.collect { |wrd| "#{wrd.downcase}"}
-
     results = []
-    if params[:system][:searchby] == '1'
-      @keywords.each do |key|
+
+    if !@query or @query == ""
+      flash[:error] = "Search query cannot be empty"
+      redirect_to :controller => 'system', :action => 'index'
+    else
+      keywords = @query.split.collect { |wrd| "#{wrd.downcase}"}
+
+      if params[:system][:searchby] == '1'
+        keywords.each do |key|
         Post.search(key).each { |p| results << p }
+        end
+      elsif params[:system][:searchby] =='2'
+
+        if keywords.size > 1
+          flash[:error] = "Please specify only one user name"
+          redirect_to :controller => 'system', :action => 'index'
+        else
+          userlist = User.search(keywords[0])
+
+          if !userlist.nil? and userlist.size > 0
+            @username = '1'
+            userlist.each do |usr|
+              Post.find_all_by_user_id(usr.id).each {|p| results << p}
+            end
+          else
+            @username = '0'
+          end
+        end
       end
+      @posts = results.uniq
     end
-    @posts = results.uniq
   end
 end
-

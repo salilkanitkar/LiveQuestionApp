@@ -7,6 +7,12 @@
   <% if @posts and @posts.size > 0 %>
     <%= render(@posts) %>
   <% else %>
-    The search query "<%= @query %>" did not match
+    <% if @username and @username == '1' %>
+      No posts by users with "<%= @query %>" in their Username
+    <% elsif @username and @username == '0' %>
+      Users with "<%= @query %>" in their Usernames does not exist
+    <% else %>
+      The search query "<%= @query %>" did not match
+    <% end %>
   <% end %>
 </div>

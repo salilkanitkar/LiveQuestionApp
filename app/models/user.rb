@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
     nil
   end
 
+  def self.search(key)
+    all(:conditions => ["#{:username} like ?", '%' + key + '%'])
+  end
+
 private
   def password_check
       if self.password.blank?
