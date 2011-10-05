@@ -27,7 +27,22 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
+  <div class="field">
+      <br />
+      <%= f.label "Check to grant Admin Rights" %>
+      <%= f.check_box :isadmin %>
+  </div>
+
+
   <div class="actions">
-    <%= f.submit %>
+    <br />
+    <div class="form-button-other-panel">
+      <% if session[:id] and session[:isadmin] == 1 %>
+        <%= f.submit "Create User", :from_list => '1', :class => 'form-button-other'  %>
+      <% else %>
+        <%= f.submit "Sign Up", :class => 'form-button-other' %>
+      <% end %>
+    </div>
+    <hr>
   </div>
 <% end %>

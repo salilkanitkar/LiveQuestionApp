@@ -17,4 +17,8 @@ module SystemHelper
     end
   end
 
+  def get_number_of_replies(p)
+    Post.get_count_of_replies(p)
+  end
+
 end

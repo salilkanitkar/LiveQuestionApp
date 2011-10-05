@@ -1,34 +1,32 @@
-<h1>Listing users</h1>
+<div>
+  <br />
+</div>
+<div class="title">
+  Users
+</div>
 
-<% if session[:id] %>
+<div class="user-list-container">
+  <% if session[:id] %>
     <table>
       <tr>
         <th>Username</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Posts</th>
         <% if session[:isadmin] == 1 %>
-            <th></th>
+          <th></th>
         <% end %>
       </tr>
-
-      <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.username, :controller => 'users', :action => 'show', :id => user.id %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <% if session[:isadmin] == 1 and session[:id] != user.id %>
-            <td><%= button_to 'Delete This User',  :controller => 'system', :action => 'delete_user', :user_id => user.id %></td>
-        <% else %>
-            <td></td>
-        <% end %>
-      </tr>
-    <% end %>
+      <%= render @users %>
     </table>
+  <% else %>
+    You need to login to view this page! <%= link_to "Sign In", :controller => 'sessions', :action => 'new' %>
+  <% end %>
+</div>
 
-<% else %>
-    <p>You need to login to view this page! <%= link_to "Sign In", :controller => 'sessions', :action => 'new' %></p>
-<% end %>
-
-
-<br />
+<div>
+  <br />
+  <hr>
+  <%= link_to "Go to homepage", :controller => 'system', :action => 'index' %>
+</div>
 

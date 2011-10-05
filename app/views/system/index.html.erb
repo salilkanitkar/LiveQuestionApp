@@ -5,6 +5,10 @@
 </div>
 <br />
 <div class="post-container">
+  <% if @posts.size > 0 %>
     <%= render(@posts) %>
+  <% else %>
+    Be the first one to ask a Question
+  <% end %>
 </div>
 

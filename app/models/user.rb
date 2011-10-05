@@ -26,13 +26,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def password_check
-      if self.password.blank?
-        errors.add(:password, "field can not be empty")
-      end
-      errors.add(:password, "can not be smaller than 6 or greater than 20 characters:"+self.password+":") if self.password.length < 6 or self.password.length > 20
-  end
-
   def self.authenticate(user_name, password)
     user = self.find_by_username(user_name)
     if !user.nil?
@@ -44,4 +37,11 @@ class User < ActiveRecord::Base
     nil
   end
 
+private
+  def password_check
+      if self.password.blank?
+        errors.add(:password, "field can not be empty")
+      end
+      errors.add(:password, "can not be smaller than 6 or greater than 20 characters:"+self.password+":") if self.password.length < 6 or self.password.length > 20
+  end
 end

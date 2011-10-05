@@ -1,6 +1,7 @@
-<%= form_for(:system, :url => "search", :html => {:id => "header-search-form"}) do |f| %>
+<%= form_for(:system, :url => '/system/search_results', :html => {:id => "header-search-form"}) do |f| %>
 
   <%= f.text_field(:searchbox, :placeholder => 'Search')%>
+  <%= f.select(:searchby, {"by Content" => 1, "by Username" => 2}) %>
   <%= f.submit("", :id => "search-button") %>
 
 <% end %>

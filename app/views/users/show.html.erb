@@ -1,8 +1,8 @@
-<br />
-<p id="notice"><%= notice %></p>
-
-<hr />
-<h2>User Profile</h2>
+<div class="title">
+ <br />
+ User Profile
+  <hr />
+</div>
 
 <p>
   <b>Username:</b>
@@ -36,13 +36,17 @@
 </p>
 <% end %>
 
-<% if session[:isadmin] == 1 && session[:id] != @user.id %>
-    <%= button_to 'Delete This User',  :controller => 'system', :action => 'delete_user', :user_id => @user.id %> <br />
+<% if session[:isadmin] == 1 and session[:id] != @user.id %>
+  <div class="form-button-other-panel">
     <% if @user.isadmin == 0 %>
-        <%= button_to 'Grant Admin Privileges to this User',  :controller => 'system', :action => 'grant_isadmin', :user_id => @user.id %> <br />
+      <%= button_to 'Grant Admin',  {:controller => 'system', :action => 'grant_admin', :user_id => @user.id}, :class => 'form-button-other' %> <br />
     <% else %>
-        <%= button_to 'Revoke Admin Privileges from this User',  :controller => 'system', :action => 'revoke_isadmin', :user_id => @user.id %> <br />
+      <%= button_to 'Revoke Admin',  {:controller => 'system', :action => 'revoke_admin', :user_id => @user.id}, :class => 'form-button-other' %> <br />
     <% end %>
+  </div>
+  <div class="form-button-other-panel">
+    <%= button_to 'Delete This User',  {:controller => 'system', :action => 'delete_user', :user_id => @user.id, :listing => @from_list}, :class => 'form-button-other'  %> <br />
+  </div>
 <% end %>
 
 <hr />

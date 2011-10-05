@@ -1,2 +1,12 @@
+<div class="title">
+  <br />
+  <% if session[:id] and session[:isadmin] == 1 %>
+    Create User
+  <% else %>
+    New User Sign Up
+  <% end %>
+  <br />
+  <hr>
+</div>
 <%= render 'form' %>
 

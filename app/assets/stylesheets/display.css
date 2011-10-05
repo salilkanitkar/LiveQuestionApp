@@ -76,15 +76,22 @@ body {
     padding-top: 15px;
 }
 
-#system_searchbox {
+#system_searchbox, #system_searchby {
     border: 1px solid #a52a2a;
-    color: #7aa1c2;
     height:20px;
-    width: 150px;
     background: #f5f5f5;
     border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
+}
+
+#system_searchbox {
+    color: #7aa1c2;
+    width: 150px;
+}
+
+#system_searchby {
+    font-weight: bold;
 }
 
 #header-search-form input:focus {
@@ -192,6 +199,8 @@ body {
 	/*margin-right:10px;*/
 	position: relative;
     width: 110px;
+
+    text-overflow: ellipsis;
 }
 
 #nav a{
@@ -263,7 +272,7 @@ body {
     margin: 0;
 }
 
-.nav li, .button-panel li, .form-button, .post-button-panel li {
+.nav li, .button-panel li, .form-button, .form-button-other, .post-button-panel li {
     background: #777777;
     display: block;
 
@@ -283,16 +292,24 @@ body {
     float: left;
 }
 
-.nav li:hover, .button-panel li:hover, .form-button:hover, .post-button-panel li:hover {
+.nav li:hover, .button-panel li:hover, .form-button:hover, .form-button-other:hover, .post-button-panel li:hover {
     background-color:#ff9900;
 }
 
-.nav a, .button-panel a, .form-button, .post-button-panel a {
+.nav a, .button-panel a, .form-button, .form-button-other, .post-button-panel a {
     color: #fff;
     display: block;
     font-weight: bold;
-    padding: 6px 12px 6px 12px;
     text-decoration: none;
+}
+
+.nav a, .button-panel a, .form-button, .form-button-other {
+    padding: 6px 12px 6px 12px;
+}
+
+.post-button-panel a {
+    font-size: 105%;
+    padding: 8px 12px 8px 12px;
 }
 
 .askquestion, .form-button {
@@ -301,6 +318,21 @@ body {
 
 .form-button {
     margin-right: 0;
+}
+
+
+
+.form-button-other-panel input {
+    margin-right: auto;
+    margin-left: auto;
+    width: 150px;
+    display: inline-block;
+}
+
+.form-button-other {
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
 }
 
 #nav-askquestion {
@@ -340,10 +372,17 @@ body {
     min-height: 200px;
 }
 
-.post-container {
+.post-container, .user-list-container {
     margin-left: auto;
     margin-right: auto;
+
+}
+.user-list-container {
     width: 900px;
+}
+
+.post-container {
+    width: 1000px;
 }
 
 .post {
@@ -358,17 +397,17 @@ body {
 
 .post-content {
     float: left;
-    height: 100px;
+    height: 119px;
     width: 700px;
     text-align: left;
-    overflow: hidden;
+    overflow: auto;
     text-overflow: ellipsis;
 }
 
 .post-content a {
     color: #4d4848;
     font-size: 20px;
-    height: 100px;
+    height: 120px;
     font-weight: bold;
     text-decoration: none;
     width: 700px;
@@ -410,7 +449,45 @@ body {
 .post-text {
     height: 90px;
     width: 690px;
-    border: gray solid 1px;
+    /*border: gray solid 1px;*/
+    border: none;
     font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
     font-size: 105%;
+}
+
+.user-list-container table {
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+}
+
+.user-list-container td, .user-list-container th {
+    height: 30px;
+    text-overflow: ellipsis;
+
+}
+
+.td-login, .td-uname, .td-email {
+    width: 200px;
+}
+
+.td-posts {
+    width: 100px;
+}
+
+.td-delete, .td-admin {
+    width: 150px;
+}
+
+.td-delete input, .td-admin input {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin-checkbox {
+    display: inline;
+}
+
+.user-list-container table td button {
+
 }

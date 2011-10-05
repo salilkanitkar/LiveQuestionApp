@@ -12,14 +12,15 @@ AsKuery::Application.routes.draw do
   match '/signout' => 'sessions#destroy'
   match '/sessions/:id' => 'sessions#destroy'
   match '/profile' => 'users#show'
-  match '/system/create_new_post' => 'system#create_new_post'
-  match '/system/addpost' => 'system#add_new_post'
+  match '/system/add_new_post' => 'system#add_new_post'
   match '/system/add_new_reply' => 'system#add_new_reply'
   match '/system/add_new_vote' => 'system#add_new_vote'
+  match '/system/grant_admin' => 'system#grant_admin'
+  match '/system/revoke_admin' => 'system#revoke_admin'
   match '/posts/:id' => 'posts#destroy'
   match '/system/delete_user' => 'system#delete_user'
-  match '/system/grant_isadmin' => 'system#grant_isadmin'
-  match '/system/revoke_isadmin' => 'system#revoke_isadmin'
+  match '/system/search_results' => 'system#search_results'
+  match '/system/see_all_questions' => 'system#see_all_questions'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

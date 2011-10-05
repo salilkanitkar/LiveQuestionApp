@@ -1,0 +1,15 @@
+<tr>
+  <td class="td-login"><%= link_to user.username, :controller => 'users', :action => 'show', :id => user.id, :from_list => '1' %></td>
+  <td class="td-uname"><%= user.name %></td>
+  <td class="td-email"><%= user.email %></td>
+  <td class="td-posts"><%= get_number_of_posts(user.id) %></td>
+  <% if session[:isadmin] == 1 and session[:id] != user.id %>
+      <td class="td-delete"><%= button_to 'Delete This User',  {:controller => 'system', :action => 'delete_user', :user_id => user.id, :listing => '1'}, :class => 'form-button-other' %></td>
+      <% if user.isadmin == 0 %>
+        <td class="td-admin"><%= button_to 'Grant Admin',  {:controller => 'system', :action => 'grant_admin', :user_id => user.id}, :class => 'form-button-other' %></td>
+      <% else %>
+        <td class="td-admin"><%= button_to 'Revoke Admin',  {:controller => 'system', :action => 'revoke_admin', :user_id => user.id}, :class => 'form-button-other' %></td>
+      <% end %>
+  <% else %>
+  <% end %>
+</tr>

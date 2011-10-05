@@ -2,7 +2,9 @@
   <div class="signed-in">
     <ul id="nav">
       <li>
-        <div id="profile-name"><%= session[:username]%></div>
+        <div id="profile-name">
+          <%= session[:username]%>
+        </div>
         <div id="profile-dropdown-image"> </div>
         <ul>
           <li>
@@ -10,7 +12,7 @@
           </li>
           <li>
             <% if session[:isadmin] == 1 %>
-              <%= link_to "Admin", :controller => 'users', :action => 'show' %>
+              <%= link_to "Create User", :controller => 'users', :action => 'new', :create_user => 1, :from_admin => 1 %>
             <% end %>
           </li>
           <li>
@@ -29,7 +31,7 @@
       </span>
     </div>
     <div class="signup-part">
-      If you do not have an account, <span><%= link_to "Sign Up", :controller => :users, :action => :new %></span>
+      If you do not have an account, <span><%= link_to "Sign Up", :controller => :users, :action => :new, :create_user => 1, :from_admin => 0 %></span>
     </div>
   <% end %>
 <% end %>

@@ -1,0 +1,12 @@
+<br />
+<div class="title">
+  Search Results
+</div>
+<br />
+<div class="post-container">
+  <% if @posts and @posts.size > 0 %>
+    <%= render(@posts) %>
+  <% else %>
+    The search query "<%= @query %>" did not match
+  <% end %>
+</div>

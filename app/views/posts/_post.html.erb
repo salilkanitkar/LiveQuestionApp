@@ -1,14 +1,15 @@
 <div>
-    <hr>
-    <br />
-  </div>
+  <br />
+  <hr>
+  <br />
+</div>
 <div class="post">
   <div class="post-other-data">
     <div class="vote-section-container">
       <ul class="vote-section">
         <li>
           <% if session[:id] %>
-            <%= form_tag(:controller => 'system', :action => 'add_new_vote', :user_id => session[:id], :post_id => post.id, :caller => params[:controller]) do %>
+            <%= form_tag(:controller => 'system', :action => 'add_new_vote', :remote => true, :user_id => session[:id], :post_id => post.id, :caller => params[:controller]) do %>
               <%= image_submit_tag("../images/up.png") %>
             <% end %>
           <% end %>
@@ -25,11 +26,10 @@
     <div class="user-section-container">
       <ul class="user-section">
         <li>
-          <% if session[:id] %>
-            <div id="user-name-link">by <%= link_to "#{get_user_name_from_user_id(post.user_id)}", :controller => 'users', :action => 'show', :id => post.user_id %></div>
-          <% else %>
-            <div id="user-name-link">by <%= get_user_name_from_user_id(post.user_id) %></div>
-          <% end %>
+          Replies: <%= get_number_of_replies(post.id) %>
+        </li>
+        <li>
+          <div id="user-name-link">by <%= link_to "#{get_user_name_from_user_id(post.user_id)}", :controller => 'users', :action => 'show', :id => post.user_id, :from_list => '0' %></div>
         </li>
         <li>
           <span>on <%= post.created_at.strftime("%m-%d-%Y")%></span>
@@ -38,12 +38,13 @@
     </div>
   </div>
   <div class="post-content" >
-    <% if params[:controller] == "system" and params[:action] == "index" %>
+    <% if params[:controller] == "system" and (params[:action] == "index" or params[:action] == "see_all_questions" or params[:action] == "search_results") %>
       <%= link_to post.question, :controller => 'posts', :action => 'show', :id => post.id %>
     <% else %>
-      <label>
-        <textarea class="post-text" readonly="readonly"><%= post.question %></textarea>
-      </label>
+        <%= post.question %>
+      <!--<label>
+        <textarea class="post-text" readonly="readonly"></textarea>
+      </label>-->
     <% end %>
   </div>
   <div class="post-button-container">
@@ -51,12 +52,12 @@
       <ul>
         <li>
           <% if post.parent.nil? and params[:controller] == 'system' %>
-            <%= link_to "Reply", :controller => 'posts', :action => 'show', :id => post.id %>
+            <%= link_to "Reply", :controller => 'posts', :action => 'show', :id => post.id, :from_reply_button => '1' %>
           <% end %>
         </li>
         <li>
           <% if session[:isadmin] == 1 and post.parent.nil? %>
-            <%= button_to "Delete", :controller => 'posts', :action => :destroy, :id => post.id  %>
+            <%= button_to "Delete", {:controller => 'posts', :action => :destroy, :class => 'form-button', :id => post.id}, :class => 'form-button'  %>
           <% end %>
         </li>
       </ul>
