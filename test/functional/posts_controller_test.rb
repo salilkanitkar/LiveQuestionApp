@@ -6,7 +6,7 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "A Post should get displayed" do
-    get :show, :post_id => "1", :user_id => "1", :caller => "system"
+    get :show, :id => "11", :from_reply_button => "1"
     assert_redirected_to(:controller => 'system', :action => 'index')
   end
 
