@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.get_replies(p)
-    all(:conditions => {:parent => p})
+    all(:order => "created_at ASC", :conditions => {:parent => p})
   end
 
   def self.get_count_of_replies(p)
