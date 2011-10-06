@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def self.search(key)
-    all(:conditions => ["#{:username} like ?", '%' + key + '%'])
+    all(:conditions => ["lower(#{:username}) like ?", '%' + key.downcase + '%'])
   end
 
 private

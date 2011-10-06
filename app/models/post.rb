@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.search(key)
-    all(:order => "numofvotes DESC, created_at DESC", :conditions => ["#{:question} like ?", '%' + key + '%'])
+    all(:order => "numofvotes DESC, created_at DESC", :conditions => ["lower(#{:question}) like ?", '%' + key.downcase + '%'])
   end
 
 end
