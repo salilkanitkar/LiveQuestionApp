@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 
+gem 'sqlite3'
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -24,15 +26,10 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :development do
-  gem 'sqlite3'
-end
-
-group :test do
+group :development, :test do
   # Pretty printed test output
-  gem 'sqlite3'
-  gem 'test-unit'
   gem 'memory_test_fix'
   gem 'capybara'
   gem 'turn', :require => false
+  gem 'test-unit'
 end
