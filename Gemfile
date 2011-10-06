@@ -34,3 +34,8 @@ group :test do
   gem 'capybara'
   gem 'turn', :require => false
 end
+
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
+end

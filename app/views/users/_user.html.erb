@@ -8,7 +8,7 @@
     <td class="td-votes-by"><%= get_number_of_votes_by(user.id) %></td>
   <% end %>
 
-  <% if session[:isadmin] == 1 and session[:id] != user.id %>
+  <% if session[:isadmin] == 1 and session[:id] != user.id and user.username != 'admin-admin' %>
 
     <td class="td-delete"><%= button_to 'Delete This User',  {:controller => 'system', :action => 'delete_user', :user_id => user.id, :listing => '1'}, :class => 'form-button-other' %></td>
     <% if user.isadmin == 0 %>

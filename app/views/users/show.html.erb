@@ -36,7 +36,7 @@
 </p>
 <% end %>
 
-<% if session[:isadmin] == 1 and session[:id] != @user.id %>
+<% if session[:isadmin] == 1 and session[:id] != @user.id and @user.username != 'admin-admin' %>
   <div class="form-button-other-panel">
     <% if @user.isadmin == 0 %>
       <%= button_to 'Grant Admin',  {:controller => 'system', :action => 'grant_admin', :user_id => @user.id}, :class => 'form-button-other' %> <br />
