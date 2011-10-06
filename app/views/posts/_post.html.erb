@@ -9,7 +9,7 @@
       <ul class="vote-section">
         <li>
           <% if session[:id] %>
-            <%= form_tag(:controller => 'system', :action => 'add_new_vote', :remote => true, :user_id => session[:id], :post_id => post.id, :caller => params[:controller]) do %>
+            <%= form_tag(:controller => 'system', :action => 'add_new_vote', :user_id => session[:id], :post_id => post.id, :caller => params[:controller]) do %>
               <%= image_submit_tag("../images/up.png") %>
             <% end %>
           <% end %>
