@@ -1,3 +1,49 @@
+Name of the Project:
+----------------------
+AsKuery
+
+Team Members
+-------------
+Mohanish Kulkarni (mhkulkar@ncsu.edu)
+Salil Kanitkar    (sskanitk@ncsu.edu)
+Abhishek Maroo    (amaroo@ncsu.edu)
+
+Default Admin User Login Details
+----------------------------------------------------------------
+Username      Password
+admin-admin   cannot delete me          (spaces including)
+
+Functionality Details
+-----------------------
+1) All the required functionality put up in the Problem Definition has been provided.
+
+2) You can sign in using the default admin user credentials mentioned above or you can "Sign Up" 
+to create new users.
+
+3) The question text that you will see on the main homepage will be a link.
+By clicking on this post-specific link, you will be taken to a post-specific page where you can post a reply, 
+vote up the original post, vote up the already posted replies etc. 
+
+4) Decay Factor: We consider decay factor as a combination of number of votes received by a post 
+and the timestamp associated with the creation time of the post.
+
+5) User Statistics: We display "Number of Posts by a User", "Number of Votes by this user"
+and "Number of Votes for the posts (including replies) that this user made"
+The third factor mentioned above can be used as an indicator for measuring up the usefullness
+of the questions asked by the user and rpelies posted to other users. This sort of mimicks
+the "points" feature of stackoverflow.
+
+
+How we (think we) stand out
+-----------------------------
+1) We have tried to make our site resemble as much as possible to the stackoverflow site.
+2) The "Users" link will display all the users currently registered into the system. 
+3) Since the decay factor metric displays only Top Questions asked in recent history, 
+we also have an "All Questions" link which will display exhaustively all the questions.
+
+
+-----------------------------------------------------------------------------------------------------------------
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
