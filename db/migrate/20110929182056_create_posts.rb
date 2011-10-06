@@ -2,7 +2,7 @@ class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
       t.text :question
-      t.integer :numOfVotes
+      t.integer :numofvotes
       t.integer :parent
       t.integer :rating
 

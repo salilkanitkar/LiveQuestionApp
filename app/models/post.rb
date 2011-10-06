@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :question
 
   def self.get_top_posts
-    all(:order => "numOfVotes DESC, created_at DESC", :limit => 50, :conditions => {:parent => nil})
+    all(:order => "numofvotes DESC, created_at DESC", :limit => 50, :conditions => {:parent => nil})
   end
 
   def self.get_replies(p)
@@ -23,11 +23,11 @@ class Post < ActiveRecord::Base
   end
 
   def self.get_num_votes_for(u)
-    sum(:numOfVotes, :conditions => {:user_id => u})
+    sum(:numofvotes, :conditions => {:user_id => u})
   end
 
   def self.search(key)
-    all(:order => "numOfVotes DESC, created_at DESC", :conditions => ["#{:question} like ?", '%' + key + '%'])
+    all(:order => "numofvotes DESC, created_at DESC", :conditions => ["#{:question} like ?", '%' + key + '%'])
   end
 
 end

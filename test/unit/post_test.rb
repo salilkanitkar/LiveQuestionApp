@@ -20,7 +20,7 @@ class PostTest < ActiveSupport::TestCase
 
   test "numOfVotes should not be less than zero" do
     post = Post.new
-    post.numOfVotes = -1
+    post.numofvotes = -1
     assert !post.save, "Number of votes can not be less than zero for any Post"
   end
 

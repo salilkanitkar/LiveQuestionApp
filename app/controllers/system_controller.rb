@@ -19,7 +19,7 @@ class SystemController < ApplicationController
       @newpost.question = @qsn
       @newpost.user_id = params[:user_id]
       @newpost.parent = nil
-      @newpost.numOfVotes = 0
+      @newpost.numofvotes = 0
       @newpost.save
     else
       flash[:error] = "You must be sign in to post a new question"
@@ -35,7 +35,7 @@ class SystemController < ApplicationController
       @newpost.question = @qsn
       @newpost.user_id = params[:user_id]
       @newpost.parent = params[:post_id]
-      @newpost.numOfVotes = 0
+      @newpost.numofvotes = 0
       @newpost.save
     else
       flash[:error] = "You must be sign in to reply to a question"
@@ -52,7 +52,7 @@ class SystemController < ApplicationController
         flash[:error] = "You are not allowed to vote your own Post!"
       elsif @votedbefore.nil? == true
 
-        @thispost.numOfVotes = @thispost.numOfVotes + 1
+        @thispost.numofvotes = @thispost.numofvotes + 1
         @thispost.save
 
         @thisvote = Vote.new
@@ -84,7 +84,7 @@ class SystemController < ApplicationController
       if @myvotes.nil? == false
         @myvotes.each do |myvote|
           thispost = Post.find(myvote.post_id)
-          thispost.numOfVotes = thispost.numOfVotes - 1
+          thispost.numofvotes = thispost.numofvotes - 1
           thispost.save
           myvote.destroy
         end
