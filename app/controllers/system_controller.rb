@@ -52,8 +52,8 @@ class SystemController < ApplicationController
         flash[:error] = "You are not allowed to vote your own Post!"
       elsif @votedbefore.nil? == true
 
-        @thispost.numofvotes = @thispost.numofvotes + 1
-        @thispost.save
+        num = @thispost.numofvotes + 1
+        @thispost.update_attribute(:numofvotes, num)
 
         @thisvote = Vote.new
         @thisvote.user_id = params[:user_id]
