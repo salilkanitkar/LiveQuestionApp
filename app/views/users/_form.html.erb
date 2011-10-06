@@ -27,11 +27,13 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
-  <div class="field">
-      <br />
-      <%= f.label "Check to grant Admin Rights" %>
-      <%= f.check_box :isadmin %>
-  </div>
+  <% if session[:id] and session[:isadmin] == 1 %>
+      <div class="field">
+          <br />
+          <%= f.label "Check to grant Admin Rights" %>
+          <%= f.check_box :isadmin %>
+    </div>
+  <% end %>
 
 
   <div class="actions">
