@@ -18,6 +18,7 @@ end
 gem 'jquery-rails'
 
 gem 'pg'
+gem 'therubyracer-heroku'
 
 # Use unicorn as the web server
 # gem 'unicorn'
